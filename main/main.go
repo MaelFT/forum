@@ -31,8 +31,8 @@ func main() {
 	fs := http.FileServer(http.Dir("./assets"))
 	http.Handle("./assets", http.StripPrefix("./assets", fs))
 	http.HandleFunc("/", Handler)
-	http.HandleFunc("/controller/login", forum.Login)
-	http.HandleFunc("/controller/register", forum.Register)
+	http.HandleFunc("/login", forum.Login)
+	http.HandleFunc("/register", forum.Register)
 	http.ListenAndServe(":8080", nil)
 	fmt.Println("Localhost:8080 open")
 }
