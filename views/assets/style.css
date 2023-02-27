@@ -1,0 +1,37 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.register {
+    position: absolute;
+    font-size: 15px;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+h1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.loginInput {
+    width:10%;
+}
+
+.loginButton {
+    width: 50%;
+    margin-left: 25%;
+}
