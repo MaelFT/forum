@@ -37,8 +37,8 @@ func main() {
         log.Fatal(err)
     }
 
-	fs := http.FileServer(http.Dir("./views/assets"))
-	http.Handle("./views/assets", http.StripPrefix("./views/assets", fs))
+	fs := http.FileServer(http.Dir("../views/assets/"))
+	http.Handle("../assets/", http.StripPrefix("../assets/", fs))
 	http.HandleFunc("/", Handler)
 	http.HandleFunc("/login", controllers.Login)
 	http.HandleFunc("/register", controllers.Register)
