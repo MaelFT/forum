@@ -7,7 +7,8 @@ import (
 	"net/http"
 	"html/template"
 	"fmt"
-	forum "forum/controllers"
+	controllers "forum/controllers"
+	// models "forum/models"
 )
 
 type Data struct {
@@ -22,19 +23,27 @@ func main() {
         log.Fatal(err)
     }
 
-	forumRepository := forum.NewSQLiteRepository(db)
+	forumRepository := controllers.NewSQLiteRepository(db)
 
-	if err := forumRepository.Migrate(); err != nil {
+	if err := forumRepository.TableUsers(); err != nil {
         log.Fatal(err)
     }
 
-	fs := http.FileServer(http.Dir("./assets"))
-	http.Handle("./assets", http.StripPrefix("./assets", fs))
+	if err := forumRepository.TablePosts(); err != nil {
+        log.Fatal(err)
+    }
+
+	if err := forumRepository.TableComments(); err != nil {
+        log.Fatal(err)
+    }
+
+	fs := http.FileServer(http.Dir("./views/assets"))
+	http.Handle("./views/assets", http.StripPrefix("./views/assets", fs))
 	http.HandleFunc("/", Handler)
-	http.HandleFunc("/login", forum.Login)
-	http.HandleFunc("/register", forum.Register)
-	http.ListenAndServe(":8080", nil)
+	http.HandleFunc("/login", controllers.Login)
+	http.HandleFunc("/register", controllers.Register)
 	fmt.Println("Localhost:8080 open")
+	http.ListenAndServe(":8080", nil)
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
