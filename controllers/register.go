@@ -11,7 +11,7 @@ type RegisterData struct {
 }
 
 func Register(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("./views/register.html")) // Affiche la page
+	tmpl := template.Must(template.ParseFiles("./views/sign_up.html")) // Affiche la page
 
 	// Affiche dans le terminal l'activité sur le site
 	switch r.Method {
