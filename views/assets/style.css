@@ -8,6 +8,8 @@ body {
     width: 100%;
     height: 100vh;
     font-family: Inter;
+    position: relative;
+    overflow: hidden;
 }
 
 a {
