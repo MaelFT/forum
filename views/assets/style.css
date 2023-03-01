@@ -166,6 +166,14 @@ a {
     height: 100vh;
 }
 
+.login13 {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+}
+
 .login12 {
     position: absolute;
     border-left: 100px solid white;
@@ -179,6 +187,10 @@ a {
     align-items: center;
     width: 100%;
     height: 100%;
+}
+
+.login14 {
+    width: 55%;
 }
 
 .signup2 {
@@ -207,13 +219,13 @@ a {
 .index1 {
     float: top;
     width: 100%;
-    height: 13vh;
+    height: 13%;
 }
 
 .index2 {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -223,12 +235,18 @@ a {
     margin-left: 2.5%;
     margin-right: 0%;
     width: 4.5%;
+    height: 100%;
+}
+
+.index12 {
+    width: 100%;
+    height: 100%;
 }
 
 .index4 {
-    margin-left: 20%;
-    margin-right: 32%;
-    width: 25%;
+    margin-left: -15%;
+    margin-right: 0%;
+    width: 27%;
     padding: 0.5%;
     padding-left: 1.5%;
     padding-right: 1%;
@@ -259,19 +277,23 @@ a {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 10%;
+    width: 13%;
     margin-left: 0%;
-    margin-right: 0%;
+    margin-right: 2%;
     z-index: 1;
     white-space: nowrap;
-    font-weight: 650;
+    font-size: 110%;
+    font-weight: 600;
 }
 
 .index9 {
-    margin-right: 35%;
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
 .index10 {
+    margin-left: 0%;
+    margin-right: 0%;
     padding: 6%;
     padding-left: 15%;
     padding-right: 15%;
@@ -281,7 +303,7 @@ a {
 .index11 {
     position: absolute;
     margin-bottom: 5%;
-    margin-left: 80%;
+    margin-left: 78.5%;
     width: 30%;
     height: 30vh;
     border-bottom-left-radius: 150px;
@@ -289,13 +311,9 @@ a {
 }
 
 .notfound1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    margin: 0%;
+    float: left;
+    width: 50%;
+    height: 100vh;
 }
 
 .notfound2 {
@@ -323,6 +341,12 @@ a {
     border-radius: 15px;
 }
 
+.notfound7 {
+    float: right;
+    width: 50%;
+    height: 100vh;
+}
+
 .notfound5 {
     display: flex;
     flex-direction: column;
@@ -330,7 +354,6 @@ a {
     align-items: center;
     width: 100%;
     height: 100%;
-    margin: 0%;
 }
 
 .notfound6 {
@@ -339,11 +362,8 @@ a {
 }
 
 .category1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    float: left;
+    width: 50%;
     height: 100%;
 }
 
@@ -353,21 +373,31 @@ a {
     justify-content: flex-start;
     align-items: center;
     height: 100%;
-    width: 50%;
+    width: 100%;
 }
 
 .category3 {
-    display: flex;
+    display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 70%;
+    min-width: 70%;
     margin-top: 4%;
     margin-bottom: 4%;
     padding: 1%;
     padding-left: 4%;
     padding-right: 4%;
     border-radius: 10px;
+    font-weight: 900;
+    font-size: 120%;
+}
+
+.category15 {
+    text-align: left;
+}
+
+.category16 {
+    text-align: right;
 }
 
 .category4 {
@@ -390,7 +420,7 @@ a {
     display: inline-flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: ;
+    align-items: flex-start;
     width: 70%;
     min-height: 100%;
     margin-bottom: 0%;
@@ -400,6 +430,8 @@ a {
 .category9 {
     margin-top: 0%;
     margin-bottom: 3%;
+    font-weight: 700;
+    font-size: 100%;
 }
 
 .category10 {
@@ -420,6 +452,8 @@ a {
     margin-top: 0%;
     margin-bottom: 0%;
     height: 30%;
+    font-weight: 700;
+    font-size: 100%;
 }
 
 .category7 {
@@ -439,16 +473,22 @@ a {
 }
 
 .category13 {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    float: right;
     width: 50%;
     height: 100%;
 }
 
+.category17 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
 .category14 {
-    width: 55%;
-    height: 55%;
     margin-top: 15%;
     margin-bottom: 0%;
+    width: 55%;
 }
