@@ -11,7 +11,7 @@ type LoginData struct {
 }
 
 func Login(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("./views/log_in.html")) // Affiche la page
+	tmpl := template.Must(template.ParseFiles("./views/login.html")) // Affiche la page
 
 	// Affiche dans le terminal l'activité sur le site
 	switch r.Method {

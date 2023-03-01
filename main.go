@@ -41,7 +41,7 @@ func main() {
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	http.HandleFunc("/", Handler)
 	http.HandleFunc("/login", controllers.Login)
-	http.HandleFunc("/register", controllers.Register)
+	http.HandleFunc("/signup", controllers.Register)
 	fmt.Println("Localhost:8080 open")
 	http.ListenAndServe(":8080", nil)
 }
