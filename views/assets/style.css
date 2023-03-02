@@ -125,17 +125,11 @@ a {
     font-size: 115%;
     font-weight: 650;
     border-radius: 18px;
+    transition: 0.3s;
 }
 
 .login18:hover {
-    margin-left: 6%;
-    padding: 1%;
-    padding-left: 3%;
-    padding-right: 3%;
-    text-align: center;
     font-size: 120%;
-    font-weight: 650;
-    border-radius: 18px;
 }
 
 .login2 {
@@ -185,15 +179,11 @@ a {
     margin-bottom: 4%;
     font-size: 110%;
     font-weight: 900;
+    transition: 0.3s;
 }
 
 .login7:hover {
     width: 44%;
-    padding: 1.5%;
-    border-radius: 22px;
-    margin-bottom: 4%;
-    font-size: 110%;
-    font-weight: 900;
 }
 
 .login8 {
@@ -343,11 +333,8 @@ a {
 }
 
 .index9:hover {
-    text-align: center;
-    width: 40%;
-    margin-left: 0%;
-    margin-right: 20%;
     font-size: 110%;
+    transition: 0.3s;
 }
 
 .index10 {
@@ -363,15 +350,8 @@ a {
 }
 
 .index10:hover {
-    text-align: center;
-    width: 40%;
-    margin-left: 0%;
-    margin-right: 0%;
-    padding: 6%;
-    padding-left: 15%;
-    padding-right: 15%;
-    border-radius: 18px;
     font-size: 110%;
+    transition: 0.3s;
 }
 
 .index11 {
@@ -415,15 +395,11 @@ a {
     padding-left: 2.5%;
     padding-right: 2.5%;
     border-radius: 15px;
+    transition: 0.3s;
 }
 
 .notfound4:hover {
-    text-align: center;
     width: 9%;
-    padding: 1%;
-    padding-left: 2.5%;
-    padding-right: 2.5%;
-    border-radius: 15px;
 }
 
 .notfound7 {
@@ -499,22 +475,11 @@ a {
     padding-left: 4%;
     padding-right: 4%;
     border-radius: 10px;
+    transition: 0.3s;
 }
 
 .category4:hover {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     width: 73%;
-    min-height: 10%;
-    margin-top: 0%;
-    margin-bottom: 3%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-left: 4%;
-    padding-right: 4%;
-    border-radius: 10px;
 }
 
 .category5 {
