@@ -833,3 +833,74 @@ a {
 .post29 {
     width: 40%;
 }
+
+.addPost1 {
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: red;
+}
+
+.addPost3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.addPost4 {
+    margin-top: 15%;
+    font-size: 130%;
+    font-weight: 750;
+}
+
+.addPost5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0%;
+}
+
+.addPost6 {
+    width: 40%;
+    padding: 1.5%;
+    border-radius: 10px;
+    margin-top: 0%;
+    margin-bottom: 1%;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.addPost7 {
+    width: 40%;
+    padding: 1.5%;
+    border-radius: 10px;
+    margin-bottom: 1%;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.addPost9 {
+    width: 40%;
+    padding: 1.5%;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.addPost8 {
+    width: 40.8%;
+    padding: 1.5%;
+    border-radius: 22px;
+    margin-bottom: 4%;
+    font-size: 110%;
+    font-weight: 900;
+    transition: 0.3s;
+}
+
+.addPost2 {
+    float: right;
+    width: 50%;
+    height: 100%;
+    background-color: yellow;
+}
