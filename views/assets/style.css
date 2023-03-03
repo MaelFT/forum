@@ -575,8 +575,8 @@ a {
     align-items: center;
     width: 70%;
     min-height: 10%;
-    margin-top: 0%;
-    margin-bottom: 3%;
+    margin-top: -1%;
+    margin-bottom: 1%;
     padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 4%;
@@ -611,30 +611,225 @@ a {
     font-size: 120%;
 }
 
-.post5 {
+.post8 {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
     width: 70%;
+    margin-bottom: 1%;
     padding: 1%;
     padding-left: 4%;
     padding-right: 4%;
     border-radius: 10px;
-    background-color: red;
+}
+
+.post5 {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .post6 {
     font-weight: 650;
     font-size: 107%;
-    background-color: yellow;
+    margin-top: 0%;
+    margin-bottom: 1%;
 }
 
 .post7 {
+    margin: 0%;
+    width: 100%;
+}
+
+.post9 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    height: 100%;
+}
+
+.post10 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 70%;
+    margin-bottom: 1%;
+    padding: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 10px;
+}
+
+.post11 {
+    width: 75%;
+    text-align: left;
+    font-size: 100%;
+    font-weight: 500;
+}
+
+.post12 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+}
+
+.post13 {
+    padding: 6%;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 15px;
+    font-size: 100%;
+    font-weight: 600;
+}
+
+.post14 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 4%;
+    width: 80%;
+    height: 100%;
+}
+
+.post15 {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 10px;
+    width: 65%;
+    min-height: 5%;
+    margin-top: 5%;
+}
+
+.post18 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 100%;
+}
+
+.post19 {
+    margin-top: 0%;
+    margin-bottom: 0%;
     width: 100%;
-    background-color: green;
+    font-size: 110%;
+    font-weight: 600;
+}
+
+.post20 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    margin-top: 0%;
+    margin-bottom: 0%;
+    width: 100%;
+}
+
+.post21 {
+    margin: 0%;
+    font-size: 90%;
+}
+
+.post22 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 15%;
+    height: 100%;
+}
+
+.post16 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 10px;
+    width: 65%;
+    height: 5%;
+    margin-top: 2%;
+}
+
+.post23 {
+    font-size: 110%;
+    font-weight: 600;
+}
+
+.post17 {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 10px;
+    width: 65%;
+    min-height: 5%;
+    margin-top: 1%;
+    transition: 0.3s;
+}
+
+.post17:hover {
+    width: 67%;
+}
+
+.post26 {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 80%;
+    min-height: 10%;
+}
+
+.post24 {
+    margin-top: 0%;
+    margin-bottom: 1%;
+    font-size: 110%;
+    font-weight: 600;
+}
+
+.post25 {
+    margin-top: 0%;
+    margin-bottom: 0%;
+    font-size: 90%;
+}
+
+.post27 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 5%;
+    width: 15%;
+    height: 100%;
+}
+
+.post28 {
+    width: 40%;
+}
+
+.post29 {
+    width: 40%;
 }
