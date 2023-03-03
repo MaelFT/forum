@@ -3,9 +3,10 @@ package forum
 import (
     "database/sql"
     "errors"
+    "fmt"
+    "golang.org/x/crypto/bcrypt"
 
     "github.com/mattn/go-sqlite3"
-    "golang.org/x/crypto/bcrypt"
     models "forum/models"
 )
 
@@ -39,6 +40,7 @@ func (r *SQLiteRepository) TableUsers() error {
         checkedmail INTEGER NOT NULL,
         password TEXT NOT NULL,
         categories TEXT,
+        cookie TEXT NOT NULL UNIQUE,
         date DATE
     );
     `
@@ -48,11 +50,9 @@ func (r *SQLiteRepository) TableUsers() error {
 }
 
 func (r *SQLiteRepository) CreateUser(users models.Users) (*models.Users, error) {
-
-    password, err := HashPassword(users.Password)
-
-    res, err := r.db.Exec("INSERT INTO users(username, mail, checkedmail, password, categories, date) values(?,?,?,?,?,?)", 
-    users.Username, users.Mail, users.CheckedMail, password, users.Categories, users.Date)
+    password := HashPassword(users.Password)
+    res, err := r.db.Exec("INSERT INTO users(username, mail, checkedmail, password, categories, cookie, date) values(?,?,?,?,?,?,?)", 
+    users.Username, users.Mail, users.CheckedMail, password, users.Categories, users.Cookie, users.Date)
     if err != nil {
         var sqliteErr sqlite3.Error
         if errors.As(err, &sqliteErr) {
@@ -72,14 +72,6 @@ func (r *SQLiteRepository) CreateUser(users models.Users) (*models.Users, error)
     return &users, nil
 }
 
-func HashPassword(password string) (string, error) {
-    var passwordBytes = []byte(password)
-
-    hashedPasswordBytes, err := bcrypt.GenerateFromPassword(passwordBytes, bcrypt.MinCost)
-
-    return string(hashedPasswordBytes), err
-}
-
 func (r *SQLiteRepository) AllUsers() ([]models.Users, error) {
     rows, err := r.db.Query("SELECT * FROM users")
     if err != nil {
@@ -90,7 +82,7 @@ func (r *SQLiteRepository) AllUsers() ([]models.Users, error) {
     var all []models.Users
     for rows.Next() {
         var users models.Users
-        if err := rows.Scan(&users.ID, &users.Username, &users.Mail, &users.CheckedMail, &users.Password, &users.Categories, &users.Date); err != nil {
+        if err := rows.Scan(&users.ID, &users.Username, &users.Mail, &users.CheckedMail, &users.Password, &users.Categories, &users.Cookie, &users.Date); err != nil {
             return nil, err
         }
         all = append(all, users)
@@ -98,20 +90,18 @@ func (r *SQLiteRepository) AllUsers() ([]models.Users, error) {
     return all, nil
 }
 
-func (r *SQLiteRepository) ConnectUser(username string, password string) (*models.Users, error) {
-    hashedPassword, err := HashPassword(password)
-    if err != nil {
-        return nil, err
-    }
-
-    row := r.db.QueryRow("SELECT * FROM users WHERE username = ?, password = ?", username, hashedPassword)
-
+func (r *SQLiteRepository) CheckUser(username string, password string) (*models.Users, error) {
+    row := r.db.QueryRow("SELECT * FROM users WHERE username = ?", username)
     var users models.Users
-    if err := row.Scan(&users.ID, &users.Username, &users.Mail, &users.CheckedMail, &users.Password, &users.Categories, &users.Date); err != nil {
+    if err := row.Scan(&users.ID, &users.Username, &users.Mail, &users.CheckedMail, &users.Password, &users.Categories, &users.Cookie, &users.Date); err != nil {
         if errors.Is(err, sql.ErrNoRows) {
             return nil, ErrNotExists
         }
         return nil, err
+    }
+    fmt.Println(users.Password, password, ComparePassword(users.Password, password))
+    if ComparePassword(users.Password, password) != nil {
+        return nil, ErrNotExists
     }
     return &users, nil
 }
@@ -120,7 +110,7 @@ func (r *SQLiteRepository) UpdateUser(id int64, updated models.Users) (*models.U
     if id == 0 {
         return nil, errors.New("invalid updated ID")
     }
-    res, err := r.db.Exec("UPDATE users SET username = ?, mail = ?, checkedmail = ?, password = ?, categories = ?, date = ?, WHERE id = ?", updated.Username, updated.Mail, updated.CheckedMail, updated.Password, updated.Categories, updated.Date, id)
+    res, err := r.db.Exec("UPDATE users SET username = ?, mail = ?, checkedmail = ?, password = ?, categories = ?, cookie = ?, date = ?, WHERE id = ?", updated.Username, updated.Mail, updated.CheckedMail, updated.Password, updated.Categories, updated.Cookie, updated.Date, id)
     if err != nil {
         return nil, err
     }
@@ -153,6 +143,19 @@ func (r *SQLiteRepository) DeleteUser(id int64) error {
     }
 
     return err
+}
+
+func HashPassword(password string) string {
+	pw := []byte(password)
+	result, _ := bcrypt.GenerateFromPassword(pw, bcrypt.DefaultCost)
+	return string(result) 
+}
+
+func ComparePassword(hashPassword string, password string) error {
+	pw := []byte(password)
+	hw := []byte(hashPassword)
+	err := bcrypt.CompareHashAndPassword(hw, pw)
+	return err
 }
 
 /*---------------------
@@ -381,5 +384,28 @@ func (r *SQLiteRepository) DeleteComment(id int64) error {
         return ErrDeleteFailed
     }
 
+    return err
+}
+
+/*---------------------
+     Like Query
+----------------------*/
+
+func (r *SQLiteRepository) TableLike() error {
+    query := `
+    CREATE TABLE IF NOT EXISTS like(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        value INTEGER NOT NULL,
+        post_id INTEGER NOT NULL,
+        user_id INTEGER NOT NULL,
+        date DATE,
+        FOREIGN KEY (user_id)
+            REFERENCES users (id),
+        FOREIGN KEY (post_id)
+            REFERENCES posts (id)
+    );
+    `
+
+    _, err := r.db.Exec(query)
     return err
 }

@@ -7,5 +7,6 @@ type Users struct {
 	CheckedMail int64
 	Password string
 	Categories string
+	Cookie string
 	Date string
 }

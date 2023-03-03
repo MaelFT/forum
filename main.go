@@ -8,7 +8,6 @@ import (
 	"html/template"
 	"fmt"
 	controllers "forum/controllers"
-	// models "forum/models"
 )
 
 type Data struct {
@@ -37,11 +36,16 @@ func main() {
         log.Fatal(err)
     }
 
+	if err := forumRepository.TableLike(); err != nil {
+        log.Fatal(err)
+    }
+
 	fs := http.FileServer(http.Dir("./views/assets/"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
-	http.HandleFunc("/", Handler)
+	http.HandleFunc("/index", Handler)
 	http.HandleFunc("/login", controllers.Login)
 	http.HandleFunc("/signup", controllers.Register)
+	http.HandleFunc("/", controllers.PageNotFound)
 	fmt.Println("Localhost:8080 open")
 	http.ListenAndServe(":8080", nil)
 }
