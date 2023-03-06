@@ -3,20 +3,22 @@ package forum
 import (
 	"net/http"
 	"html/template"
-	"database/sql"
 	"fmt"
 	models "forum/models"
 )
 
 type PostData struct {
 	Users models.Users
+	Connected int
 	Error string
 }
 
 func Post(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
 	tmpl := template.Must(template.ParseFiles("./views/post.html")) // Affiche la page
-	data := PostData {}
+	data := PostData {
+		Connected: 0,
+	}
     
 	if err != nil || c.Value == "" {
 		fmt.Println(c, err)
@@ -38,21 +40,8 @@ func Post(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	db, err := sql.Open("sqlite3", "forum.db")
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	forumRepository := NewSQLiteRepository(db)
-
-	user, err := forumRepository.GetUserByCookie(c.Value)
-	if err != nil {
-		fmt.Println(err)
-	}
-
 	data = PostData {
-		Users: *user,
-		Error: "",
+		Connected: 1,
 	}
 
 	err = tmpl.Execute(w, data)

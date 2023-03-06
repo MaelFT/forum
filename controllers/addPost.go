@@ -3,13 +3,13 @@ package forum
 import (
 	"net/http"
 	"html/template"
-	"database/sql"
 	"fmt"
 	models "forum/models"
 )
 
 type AddPostData struct {
 	Users models.Users
+	Connected int
 	Error string
 }
 
@@ -33,24 +33,16 @@ func AddPost(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		}
-
 		data := AddPostData {}
 
-		db, err := sql.Open("sqlite3", "forum.db")
-		if err != nil {
-			fmt.Println(err)
-		}
+		title := r.Form.Get("title")
+		category := r.Form.Get("category")
+		content := r.Form.Get("content")
 
-		forumRepository := NewSQLiteRepository(db)
-
-		user, err := forumRepository.GetUserByCookie(c.Value)
-		if err != nil {
-			fmt.Println(err)
-		}
+		fmt.Println(title, category, content)
 	
 		data = AddPostData {
-			Users: *user,
-			Error: "",
+			Connected: 1,
 		}
 
 		err = tmpl.Execute(w, data)
