@@ -40,6 +40,10 @@ func AddPost(w http.ResponseWriter, r *http.Request) {
 		content := r.Form.Get("content")
 
 		fmt.Println(title, category, content)
+
+		post := models.Posts {
+			
+		}
 	
 		data = AddPostData {
 			Connected: 1,

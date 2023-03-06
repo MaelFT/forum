@@ -13,6 +13,7 @@ import (
 
 type Data struct {
 	Users models.Users
+	Connected int
 	Error string
 }
 
@@ -59,7 +60,9 @@ func main() {
 func Handler(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
 	tmpl := template.Must(template.ParseFiles("./views/index.html")) // Affiche la page
-	data := Data {}
+	data = Data {
+		Connected: 0,
+	}
     
 	if err != nil || c.Value == "" {
 		fmt.Println(c, err)
@@ -94,8 +97,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data = Data {
-		Users: *user,
-		Error: "",
+		Connected: 1,
 	}
 
 	err = tmpl.Execute(w, data)
