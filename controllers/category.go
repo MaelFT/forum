@@ -8,15 +8,15 @@ import (
 	models "forum/models"
 )
 
-type PageNotFoundData struct {
+type CategoryData struct {
 	Users models.Users
 	Error string
 }
 
-func PageNotFound(w http.ResponseWriter, r *http.Request) {
+func Category(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
-	tmpl := template.Must(template.ParseFiles("./views/404.html")) // Affiche la page
-	data := PageNotFoundData {}
+	tmpl := template.Must(template.ParseFiles("./views/category.html")) // Affiche la page
+	data := CategoryData {}
     
 	if err != nil || c.Value == "" {
 		fmt.Println(c, err)
@@ -51,7 +51,7 @@ func PageNotFound(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 
-	data = PageNotFoundData {
+	data = CategoryData {
 		Users: *user,
 		Error: "",
 	}

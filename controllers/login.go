@@ -15,10 +15,10 @@ type LoginData struct {
 func Login(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
     
-	if err != nil {
+	if err != nil || c.Value == "" {
 		fmt.Println(c, err)
 	} else {
-		http.Redirect(w, r, "/", http.StatusFound)
+		http.Redirect(w, r, "/index", http.StatusFound)
 	}
 
 	tmpl := template.Must(template.ParseFiles("./views/login.html")) // Affiche la page
@@ -69,7 +69,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			Expires:    time.Now().Add(3600 * time.Second),
 		})
 
-		http.Redirect(w, r, "/", http.StatusFound)
+		http.Redirect(w, r, "/index", http.StatusFound)
 	}
 
 	err = tmpl.Execute(w, data)

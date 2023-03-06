@@ -8,5 +8,6 @@ type Users struct {
 	Password string
 	Categories string
 	Cookie string
+	Role string
 	Date string
 }

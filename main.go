@@ -8,10 +8,12 @@ import (
 	"html/template"
 	"fmt"
 	controllers "forum/controllers"
+	models "forum/models"
 )
 
 type Data struct {
-
+	Users models.Users
+	Error string
 }
 
 const fileName = "forum.db"
@@ -45,13 +47,29 @@ func main() {
 	http.HandleFunc("/index", Handler)
 	http.HandleFunc("/login", controllers.Login)
 	http.HandleFunc("/signup", controllers.Register)
+	http.HandleFunc("/logout", controllers.Logout)
+	http.HandleFunc("/post", controllers.Post)
+	http.HandleFunc("/addPost", controllers.AddPost)
+	http.HandleFunc("/category", controllers.Category)
 	http.HandleFunc("/", controllers.PageNotFound)
 	fmt.Println("Localhost:8080 open")
 	http.ListenAndServe(":8080", nil)
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	c, err := r.Cookie("session_token")
 	tmpl := template.Must(template.ParseFiles("./views/index.html")) // Affiche la page
+	data := Data {}
+    
+	if err != nil || c.Value == "" {
+		fmt.Println(c, err)
+		err = tmpl.Execute(w, data)
+		if err != nil {
+			fmt.Println(err)
+			fmt.Fprintln(w, err)
+		}
+		return
+	}
 
 	// Affiche dans le terminal l'activité sur le site
 	switch r.Method {
@@ -63,9 +81,24 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	data := Data {}
+	db, err := sql.Open("sqlite3", "forum.db")
+	if err != nil {
+		fmt.Println(err)
+	}
 
-	err := tmpl.Execute(w, data)
+	forumRepository := controllers.NewSQLiteRepository(db)
+
+	user, err := forumRepository.GetUserByCookie(c.Value)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	data = Data {
+		Users: *user,
+		Error: "",
+	}
+
+	err = tmpl.Execute(w, data)
 
 	if err != nil {
 		fmt.Println(err)
