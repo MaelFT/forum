@@ -197,6 +197,7 @@ func (r *SQLiteRepository) TablePosts() error {
 func (r *SQLiteRepository) CreatePost(posts models.Posts) (*models.Posts, error) {
     res, err := r.db.Exec("INSERT INTO posts(name, content, categories, user_id, date) values(?,?,?,?,?)", 
     posts.Name, posts.Content, posts.Categories, posts.User_ID, time.Now())
+    fmt.Println(res, err)
     if err != nil {
         var sqliteErr sqlite3.Error
         if errors.As(err, &sqliteErr) {

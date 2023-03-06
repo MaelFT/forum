@@ -56,6 +56,7 @@ func main() {
 	http.HandleFunc("/post", controllers.Post)
 	http.HandleFunc("/addPost", controllers.AddPost)
 	http.HandleFunc("/category", controllers.Category)
+	http.HandleFunc("/addCategory", controllers.AddCategory)
 	http.HandleFunc("/", controllers.PageNotFound)
 	fmt.Println("Localhost:8080 open")
 	http.ListenAndServe(":8080", nil)

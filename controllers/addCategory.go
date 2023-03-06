@@ -8,13 +8,13 @@ import (
 	models "forum/models"
 )
 
-type AddPostData struct {
+type AddCategoryData struct {
 	Users models.Users
 	Connected int
 	Error string
 }
 
-func AddPost(w http.ResponseWriter, r *http.Request) {
+func AddCategory(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
     
 	if err != nil {
@@ -24,7 +24,7 @@ func AddPost(w http.ResponseWriter, r *http.Request) {
 		if c.Value == "" {
 			http.Redirect(w, r, "/index", http.StatusFound)
 		}
-		tmpl := template.Must(template.ParseFiles("./views/addPost.html"))
+		tmpl := template.Must(template.ParseFiles("./views/addCategory.html"))
 
 		switch r.Method {
 		case "GET":
@@ -34,7 +34,7 @@ func AddPost(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		}
-		data := AddPostData {}
+		data := AddCategoryData {}
 
 		db, err := sql.Open("sqlite3", "forum.db")
 		if err != nil {
@@ -44,26 +44,23 @@ func AddPost(w http.ResponseWriter, r *http.Request) {
 		forumRepository := NewSQLiteRepository(db)
 
 		title := r.Form.Get("title")
-		category := r.Form.Get("category")
-		content := r.Form.Get("content")
+		description := r.Form.Get("description")
 
-		fmt.Println(title, category, content)
+		fmt.Println(title, description)
 
 		user, err := forumRepository.GetUserByCookie(c.Value)
 
-		post := models.Posts {
-			Name: title,
-			Content: content,
-			Categories: category,
+		category := models.Categories {
+			Title: title,
+			Description: description,
 			User_ID: user.ID,
 		}
 
-
-		if len(title) > 1 && len(content) > 1 && len(category) > 1 {
-			forumRepository.CreatePost(post)
+		if len(title) > 1 && len(description) > 1 {
+			forumRepository.CreateCategorie(category)
 		}
-	
-		data = AddPostData {
+
+		data = AddCategoryData {
 			Connected: 1,
 		}
 
