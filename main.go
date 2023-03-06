@@ -43,6 +43,10 @@ func main() {
         log.Fatal(err)
     }
 
+	if err := forumRepository.TableCategories(); err != nil {
+        log.Fatal(err)
+    }
+
 	fs := http.FileServer(http.Dir("./views/assets/"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	http.HandleFunc("/index", Handler)
@@ -60,7 +64,7 @@ func main() {
 func Handler(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
 	tmpl := template.Must(template.ParseFiles("./views/index.html")) // Affiche la page
-	data = Data {
+	data := Data {
 		Connected: 0,
 	}
     
@@ -82,18 +86,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		if err := r.ParseForm(); err != nil {
 			return
 		}
-	}
-
-	db, err := sql.Open("sqlite3", "forum.db")
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	forumRepository := controllers.NewSQLiteRepository(db)
-
-	user, err := forumRepository.GetUserByCookie(c.Value)
-	if err != nil {
-		fmt.Println(err)
 	}
 
 	data = Data {
