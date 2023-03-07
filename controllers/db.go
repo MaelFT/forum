@@ -104,6 +104,18 @@ func (r *SQLiteRepository) GetUserByCookie(c string) (*models.Users, error) {
     return &users, nil
 }
 
+func (r *SQLiteRepository) GetUserByID(id int64) (*models.Users, error) {
+    row := r.db.QueryRow("SELECT * FROM users WHERE id = ?", id)
+    var users models.Users
+    if err := row.Scan(&users.ID, &users.Username, &users.Mail, &users.CheckedMail, &users.Password, &users.Categories, &users.Cookie, &users.Role, &users.Date); err != nil {
+        if errors.Is(err, sql.ErrNoRows) {
+            return nil, ErrNotExists
+        }
+        return nil, err
+    }
+    return &users, nil
+}
+
 func (r *SQLiteRepository) CheckUser(username string, password string) (*models.Users, error) {
     row := r.db.QueryRow("SELECT * FROM users WHERE username = ?", username)
     var users models.Users
