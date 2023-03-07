@@ -88,4 +88,8 @@ func Post(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 		fmt.Fprintln(w, err)
 	}
+
+	like := r.Form.Get("like")
+
+	fmt.Println(like)
 }
