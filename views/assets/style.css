@@ -998,29 +998,119 @@ a {
     width: 25%;
 }
 
+.home5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 70%;
+    height: 8%;
+    margin-top: 6%;
+    margin-bottom: 4%;
+    padding: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 120%;
+}
+
+.home6 {
+    height: 70%;
+    text-align: left;
+}
+
+
+.home1 {
+    position: relative;
+    width: 20%;
+    height: 70%;
+}
+
 .home4 {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-
-.home1 {
-    display: inline;
-    width: 20%;
-    background-color: green;
+    width: 100%;
 }
 
 .home3 {
     display: none;
 }
 
+.home3 a {
+}
+
 .home1:hover .home3 {
     position: absolute;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: red;
+    width: 100%;
+    min-height: 100%;
+    margin-top: 0%;
+    padding-bottom: 10%;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 100%;
+}
+
+.home1:hover a {
+    margin-top: 15%;
+    font-size: 100%;
+}
+
+.home7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.home8 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 45%;
+    height: 8%;
+    margin-top: 6%;
+    margin-bottom: 4%;
+    margin-left: 0%;
+    margin-right: 35%;
+    padding: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 10px;
+    font-weight: 900;
+    font-size: 120%;
+}
+
+.home9 {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+    min-height: 10%;
+    margin-top: 0%;
+    margin-bottom: 3%;
+    margin-left: 0%;
+    margin-right: 35%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.home9:hover {
+    width: 46%;
+    background-color: #deb3ad61;
 }
