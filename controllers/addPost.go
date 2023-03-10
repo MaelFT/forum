@@ -1,22 +1,22 @@
 package forum
 
 import (
-	"net/http"
-	"html/template"
 	"database/sql"
 	"fmt"
 	models "forum/models"
+	"html/template"
+	"net/http"
 )
 
 type AddPostData struct {
-	Users models.Users
+	Users     models.Users
 	Connected int
-	Error string
+	Error     string
 }
 
 func AddPost(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
-    
+
 	if err != nil {
 		fmt.Println(c, err)
 		http.Redirect(w, r, "/index", http.StatusFound)
@@ -34,7 +34,7 @@ func AddPost(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		}
-		data := AddPostData {}
+		data := AddPostData{}
 
 		db, err := sql.Open("sqlite3", "forum.db")
 		if err != nil {
@@ -51,19 +51,18 @@ func AddPost(w http.ResponseWriter, r *http.Request) {
 
 		user, err := forumRepository.GetUserByCookie(c.Value)
 
-		post := models.Posts {
-			Name: title,
-			Content: content,
+		post := models.Posts{
+			Name:       title,
+			Content:    content,
 			Categories: category,
-			User_ID: user.ID,
+			User_ID:    user.ID,
 		}
-
 
 		if len(title) > 1 && len(content) > 1 && len(category) > 1 {
 			forumRepository.CreatePost(post)
 		}
-	
-		data = AddPostData {
+
+		data = AddPostData{
 			Connected: 1,
 		}
 

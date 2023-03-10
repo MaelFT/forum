@@ -1,22 +1,22 @@
 package forum
 
 import (
-	"net/http"
-	"html/template"
 	"database/sql"
 	"fmt"
 	models "forum/models"
+	"html/template"
+	"net/http"
 )
 
 type AddCategoryData struct {
-	Users models.Users
+	Users     models.Users
 	Connected int
-	Error string
+	Error     string
 }
 
 func AddCategory(w http.ResponseWriter, r *http.Request) {
 	c, err := r.Cookie("session_token")
-    
+
 	if err != nil {
 		fmt.Println(c, err)
 		http.Redirect(w, r, "/index", http.StatusFound)
@@ -34,7 +34,7 @@ func AddCategory(w http.ResponseWriter, r *http.Request) {
 				return
 			}
 		}
-		data := AddCategoryData {}
+		data := AddCategoryData{}
 
 		db, err := sql.Open("sqlite3", "forum.db")
 		if err != nil {
@@ -50,17 +50,17 @@ func AddCategory(w http.ResponseWriter, r *http.Request) {
 
 		user, err := forumRepository.GetUserByCookie(c.Value)
 
-		category := models.Categories {
-			Title: title,
+		category := models.Categories{
+			Title:       title,
 			Description: description,
-			User_ID: user.ID,
+			User_ID:     user.ID,
 		}
 
 		if len(title) > 1 && len(description) > 1 {
 			forumRepository.CreateCategorie(category)
 		}
 
-		data = AddCategoryData {
+		data = AddCategoryData{
 			Connected: 1,
 		}
 

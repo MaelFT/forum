@@ -1,23 +1,25 @@
 package forum
 
 import (
-	"net/http"
-	"html/template"
 	"database/sql"
-	"strconv"
 	"fmt"
 	models "forum/models"
+	"html/template"
+	"net/http"
+	"strconv"
 )
 
 type PostData struct {
-	Users models.Users
+	Users       models.Users
 	SessionUser models.Users
-	Posts models.Posts
-	Connected int
-	Error string
+	Posts       models.Posts
+	Connected   int
+	Error       string
+	// like ?
 }
 
 func Post(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(r.Method)
 	tmpl := template.Must(template.ParseFiles("./views/post.html")) // Affiche la page
 
 	id, err := strconv.ParseInt(r.URL.Query().Get("id"), 10, 64)
@@ -42,16 +44,16 @@ func Post(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 
-	data := PostData {
-		Users: *user,
-		Posts: *post,
+	data := PostData{
+		Users:     *user,
+		Posts:     *post,
 		Connected: 0,
 	}
 
 	c, err := r.Cookie("session_token")
-    
+
 	if err != nil || c.Value == "" {
-		fmt.Println(c, err)
+		fmt.Println("ici : ", c, err)
 		err = tmpl.Execute(w, data)
 		if err != nil {
 			fmt.Println(err)
@@ -64,22 +66,48 @@ func Post(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		fmt.Println("GET")
-	case "POST": // Gestion d'erreur
-		if err := r.ParseForm(); err != nil {
-			return
-		}
-	}
+	case "POST":
+		c, err := r.Cookie("session_token")
+		if err != nil {
+			fmt.Println(c, err)
+			http.Redirect(w, r, "/login", http.StatusFound)
+		} else {
+			if c.Value == "" {
+				http.Redirect(w, r, "/login", http.StatusFound)
+			}
 
+			db, err := sql.Open("sqlite3", "forum.db")
+			if err != nil {
+				fmt.Println(err)
+			}
+			forumRepository := NewSQLiteRepository(db)
+
+			post_id, _ := strconv.Atoi(r.FormValue("post_id"))
+
+			user, _ := forumRepository.GetUserByCookie(c.Value)
+
+			likeValue, _ := strconv.Atoi(r.FormValue("value"))
+
+			like := models.Like{
+				Value:   likeValue,
+				User_ID: user.ID,
+				Post_ID: int64(post_id),
+			}
+			Like(like, likeValue)
+			http.Redirect(w, r, "/post?id="+strconv.Itoa(post_id), 302)
+		}
+		return
+	}
 	session_user, err := forumRepository.GetUserByCookie(c.Value)
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	data = PostData {
-		Users: *user,
+	data = PostData{
+		Users:       *user,
 		SessionUser: *session_user,
-		Posts: *post,
-		Connected: 1,
+		Posts:       *post,
+		Connected:   1,
 	}
 
 	err = tmpl.Execute(w, data)
