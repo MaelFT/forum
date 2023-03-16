@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="./assets/style.css">
+        <title>
+            Settings
+        </title>
+    </head>
+
+    <body>
+        <section class="index1 backgroundColor3">
+            <div class="index2">
+                <a class="index3" href="/index">
+                    <img class="index12" src="assets/images/logo.png" alt="free_speech_logo.png">
+                </a>
+
+                <form class="index4 backgroundColor2" action="/" method="POST">
+                    <div class="index6">
+                        <input class="index7 backgroundColor2 colorWhite noBorder" type="text" placeholder="Search..." name="search" required>
+                        <button class="index8 backgroundColor3 colorWhite noBorder" type="submit">
+                            /
+                        </button>
+                    </div>
+                </form>
+                
+                {{ if (eq .Connected 1)}}
+                    <div class="index14">
+                        <a class="index13 buttonColor colorWhite backgroundColor2" href="/index">
+                            Profil
+                        </a>
+                    </div>
+                {{ else }}
+                <div class="index5">
+                        <a class="index9 buttonColor colorWhite" href="/login">
+                            LOG IN
+                        </a>
+                        <a class="index10 buttonColor backgroundColor2 colorWhite" href="/signup">
+                            SIGN UP
+                        </a>
+                </div>
+                {{ end }}
+    
+                <div class="index11 backgroundColor3">
+                </div>
+            </div>
+        </section>
+
+        <section class="settings4">
+            <section class="settings5">
+                <div class="settings1">
+                    <div class="settings6 backgroundColor1">
+                        <div class="settings7">
+                            <p class="settings8">
+                                Profile
+                            </p>
+    
+                            <p class="settings9">
+                                Username
+                            </p>
+    
+                            <p class="settings9">
+                                user@gmail.com
+                            </p>
+                        </div>
+
+                        <p>
+                            02/02/2022
+                        </p>
+                    </div>
+
+                    <form method="POST">
+                        <input class="settings10 noBorder colorWhite backgroundColor2 buttonColor cursor" type="submit" name="logout" value="LOG OUT">
+                    </form>
+                </div>
+    
+                <div class="settings2">
+                    <div class="settings15">
+                        <a class="settings16 backgroundColor1" href="#posts">
+                            Posts
+                        </a>
+
+                        <a class="settings16 backgroundColor1" href="#categories">
+                            Categories
+                        </a>
+
+                        <a class="settings16 backgroundColor1" href="#comments">
+                            Comments
+                        </a>
+                    </div>
+
+                    <div id="posts" class="settings14">
+                        <div class="settings17 backgroundColor1">
+                            <div class="settings18">
+                                <p class="settings19">
+                                    Post name
+                                </p>
+    
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+    
+                            <div class="settings20">
+                                <p class="settings21">
+                                    Username
+                                </p>
+                                
+                                <div class="settings22">
+                                    <img src="assets/images/like.png" alt="like.png">
+    
+                                    <p class="settings23">
+                                        +10
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a class="settings24 colorWhite backgroundColor2 buttonColor" href="/">
+                            ADD POST
+                        </a>
+                    </div>
+
+                    <div id="categories" class="settings14">
+                        <div class="settings17 settings26 backgroundColor1">
+                            <div class="settings18">
+                                <p class="settings19">
+                                    Category name
+                                </p>
+    
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+
+                            <div class="settings25">
+                                <img src="assets/images/post.png" alt="post.png">
+
+                                <p class="settings23">
+                                    10
+                                </p>
+                            </div>
+                        </div>
+
+                        <a class="settings24 settings27 colorWhite backgroundColor2 buttonColor" href="/">
+                            ADD CATEGORY
+                        </a>
+                    </div>
+
+                    <div id="comments" class="settings14">
+                        <div class="settings17 backgroundColor1">
+                            <div class="settings18">
+                                <p class="settings19">
+                                    Post name
+                                </p>
+    
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </p>
+                            </div>
+    
+                            <div class="settings25">
+                                <img src="assets/images/like.png" alt="like.png">
+    
+                                <p class="settings23">
+                                    +10
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="settings3">
+                    <div class="settings11 backgroundColor1">
+                        <p class="settings12">
+                            Settings
+                        </p>
+
+                        <p class="settings13">
+
+                        </p>
+
+                        <p class="settings13">
+
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </body>
+</html>

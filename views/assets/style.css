@@ -1114,3 +1114,243 @@ a {
     width: 46%;
     background-color: #deb3ad61;
 }
+
+.settings4 {
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+.settings5 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.settings1 {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 25%;
+    min-height: 100%;
+}
+
+.settings6 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    height: 10%;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-radius: 15px;
+}
+
+.settings7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+    height: 100%;
+}
+
+.settings8 {
+    font-size: 110%;
+    font-weight: 700;
+    text-align: left;
+    width: 100%;
+    margin-top: 0%;
+    margin-bottom: 0%;
+}
+
+.settings9 {
+    font-size: 100%;
+    text-align: left;
+    width: 100%;
+    margin-top: 3%;
+    margin-bottom: 0%;
+}
+
+.settings10 {
+    font-size: 130%;
+    font-weight: 700;
+    padding-top: 8%;
+    padding-bottom: 8%;
+    padding-left: 18%;
+    padding-right: 18%;
+    border-radius: 10px;
+}
+
+.settings2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.settings15 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    margin-top: 4.5%;
+}
+
+.settings16 {
+    margin-right: 8%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
+    border-radius: 15px;
+}
+
+.settings14 {
+    display: none;
+}
+
+.settings14:target {
+    display: contents;
+}
+
+.settings17 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 13%;
+    margin-top:-1%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 15px;
+}
+
+.settings18 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 80%;
+    height: 100%;
+}
+
+.settings19 {
+    margin-top: 0%;
+    margin-bottom: 0%;
+    font-size: 115%;
+    font-weight: 550;
+}
+
+.settings20 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 20%;
+    height: 100%;
+}
+
+.settings21 {
+    font-size: 110%;
+    font-weight: 550;
+}
+
+.settings22 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+
+}
+
+.settings23  {
+    margin-left: 10%;
+    font-size: 125%;
+}
+
+.settings24 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+    width: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    border-radius: 15px;
+    font-size: 110%;
+    font-weight: 600;
+}
+
+.settings26 {
+    width: 70%;
+}
+
+.settings27 {
+    width: 15%;
+}
+
+.settings25 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+}
+
+.settings3 {
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+}
+
+.settings11 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 70%;
+    height: 60%;
+    margin-top: 20%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    padding-left: 4%;
+    padding-right: 4%;
+    border-radius: 15px;
+}
+
+.settings12 {
+    margin-top: 0%;
+    margin-bottom: 5%;
+    font-size: 170%;
+    font-weight: 500;
+}
+
+.settings13 {
+    margin-top: 0%;
+    margin-bottom: 5%;
+    width: 100%;
+    height: 10%;
+    border-radius: 10px;
+}
