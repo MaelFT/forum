@@ -56,7 +56,7 @@ func (r *SQLiteRepository) TableUsers() error {
 func (r *SQLiteRepository) CreateUser(users models.Users) (*models.Users, error) {
 	password := HashPassword(users.Password)
 	res, err := r.db.Exec("INSERT INTO users(username, mail, checkedmail, password, categories, cookie, role, date) values(?,?,?,?,?,?,?,?)",
-		users.Username, users.Mail, users.CheckedMail, password, users.Categories, users.Cookie, users.Role, time.Now())
+		users.Username, users.Mail, users.CheckedMail, password, users.Categories, users.Cookie, users.Role, time.Now().Format(time.DateTime))
 	if err != nil {
 		var sqliteErr sqlite3.Error
 		if errors.As(err, &sqliteErr) {
@@ -210,7 +210,7 @@ func (r *SQLiteRepository) TablePosts() error {
 
 func (r *SQLiteRepository) CreatePost(posts models.Posts) (*models.Posts, error) {
 	res, err := r.db.Exec("INSERT INTO posts(name, content, categories, user_id, date) values(?,?,?,?,?)",
-		posts.Name, posts.Content, posts.Categories, posts.User_ID, time.Now())
+		posts.Name, posts.Content, posts.Categories, posts.User_ID, time.Now().Format(time.DateTime))
 	fmt.Println(res, err)
 	if err != nil {
 		var sqliteErr sqlite3.Error
@@ -372,7 +372,7 @@ func (r *SQLiteRepository) TableCategories() error {
 
 func (r *SQLiteRepository) CreateCategorie(category models.Categories) (*models.Categories, error) {
 	res, err := r.db.Exec("INSERT INTO categories(title, description, user_id, date) values(?,?,?,?)",
-		category.Title, category.Description, category.User_ID, time.Now())
+		category.Title, category.Description, category.User_ID, time.Now().Format(time.DateTime))
 	if err != nil {
 		var sqliteErr sqlite3.Error
 		if errors.As(err, &sqliteErr) {
@@ -487,7 +487,7 @@ func (r *SQLiteRepository) TableComments() error {
 
 func (r *SQLiteRepository) CreateComment(comments models.Comments) (*models.Comments, error) {
 	res, err := r.db.Exec("INSERT INTO comments(content, post_id, user_id, date) values(?,?,?,?)",
-		comments.Content, comments.Post_ID, comments.User_ID, time.Now())
+		comments.Content, comments.Post_ID, comments.User_ID, time.Now().Format(time.DateTime))
 	if err != nil {
 		var sqliteErr sqlite3.Error
 		if errors.As(err, &sqliteErr) {
@@ -602,7 +602,7 @@ func (r *SQLiteRepository) TableLike() error {
 
 func (r *SQLiteRepository) CreateLike(like models.Like) (*models.Like, error) {
 	res, err := r.db.Exec("INSERT INTO like(value, post_id, user_id, date) values(?,?,?,?)",
-		like.Value, like.Post_ID, like.User_ID, time.Now())
+		like.Value, like.Post_ID, like.User_ID, time.Now().Format(time.DateTime))
 	if err != nil {
 		var sqliteErr sqlite3.Error
 		if errors.As(err, &sqliteErr) {
