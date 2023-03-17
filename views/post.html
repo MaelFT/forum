@@ -111,17 +111,27 @@
                 </div>
 
                 <form class="post10 backgroundColor1" action="/category" method="POST">
-                    <p class="post11">
-                        Add a new comment
-                    </p>
+                    {{ if (eq .Connected 1)}}
+                        <form class="addPost5" action="/" method="POST">
+                            <textarea class="addPost9 backgroundColor5 borderColor6" name="comment" placeholder="Comment" rows="1"></textarea>
+        
+                            <button class="addPost8 cursor backgroundColor3 noBorder color1" type="submit">
+                                Post Comment
+                            </button>
+                        </form>
+                    {{ else }}
+                        <p class="post11">
+                            Add a new comment
+                        </p>
 
-                    <div class="post12">
-                        <img src="assets/images/lock.png" alt="lock.png">
+                        <div class="post12">
+                            <img src="assets/images/lock.png" alt="lock.png">
 
-                        <a class="post13 buttonColorSoft backgroundColor2 colorWhite" href="/login">
-                            LOG IN
-                        </a>
-                    </div>
+                            <a class="post13 buttonColorSoft backgroundColor2 colorWhite" href="/login">
+                                LOG IN
+                            </a>
+                        </div>
+                    {{ end }}
                 </form>
             </section>
         </section>
