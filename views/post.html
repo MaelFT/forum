@@ -50,18 +50,18 @@
             <section class="category2">
                 <div class="category3 backgroundColor2 colorWhite">
                     <p class="category15">
-                        Post name
+                        {{ .Posts.Name }}
                     </p>
 
                     <p class="category16">
-                        Comments : 24
+                        Comments : {{ .Posts.Nb_Like }}
                     </p>
                 </div>
 
                 <div class="post3 backgroundColor1">
                     <div class="post1">
                         <p class="post2">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cras semper auctor neque vitae tempus quam pellentesque nec. Vivamus at augue eget arcu. Ipsum a arcu cursus vitae. Venenatis urna cursus eget nunc scelerisque viverra. Purus faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Tincidunt vitae semper quis lectus nulla at volutpat diam. Sapien eget mi proin sed. Senectus et netus et malesuada fames. Viverra nam libero justo laoreet sit amet cursus.
+                            {{ .Posts.Content }}
                         </p>
                     </div>
                 </div>
@@ -131,16 +131,15 @@
                 <div class="post15 backgroundColor1">
                     <div class="post18">
                         <a class="post19 underline" href="/category">
-                            Creator : Username
+                            {{ .Users.Username }}
                         </a>
 
                         <div class="post20">
                             <p class="post21">
-                                27/03/2023
+                                {{ .Posts.Date }}
                             </p>
 
                             <p class="post21">
-                                12:35
                             </p>
                         </div>
                     </div>
@@ -158,7 +157,7 @@
                         </form>
                             
                         <p class="category12">
-                            11
+                            {{ .Posts.Nb_Like }}
                         </p>
                     </div>
                 </div>
