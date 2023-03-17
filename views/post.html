@@ -70,26 +70,44 @@
                     Comments
                 </p>
 
-                <div class="post8 backgroundColor1">
-                    <div class="post5">
-                        <a class="post6 underline" href="/index">
-                            Username
-                        </a>
-                        
-                        <p class="post7">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </p>
+                <div class="test post37 backgroundColor1">
+                    <div id="edit" class="post38 backgroundColor1" style="position: relative; z-index: 2;">
+                        <div class="post5">
+                            <a class="post6 underline" href="/index">
+                                Username
+                            </a>
+                            
+                            <p class="post7">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            </p>
+                        </div>
+    
+                        <div class="post33">
+                            <div class="post9">
+                                <img class="category8" src="assets/images/like.png" alt="like.png">
+                                    
+                                <p class="category12">
+                                    11
+                                </p>
+                            </div>
+                            <a class="post39 buttonColor backgroundColor2 colorWhite" href="#edit">
+                                EDIT
+                            </a>
+                        </div>
                     </div>
 
-                    <div class="post9">
-                        <img class="category8" src="assets/images/like.png" alt="like.png">
-                            
-                        <p class="category12">
-                            11
-                        </p>
+                    <div class="post36 backgroundColor1" style="position: absolute; z-index: 1;">
+                        <form class="post32" action="/post?id=1" method="POST">
+                            <textarea class="post31 backgroundColor5 borderColor6" name="editComment" placeholder="Comment" rows="1"></textarea>
+        
+                            <button class="post30 buttonColor cursor backgroundColor3 noBorder color1" type="submit">
+                                Edit Comment
+                            </button>
+                        </form>
                     </div>
                 </div>
 
+
                 <div class="post8 backgroundColor1">
                     <div class="post5">
                         <a class="post6 underline" href="/index">
@@ -101,7 +119,7 @@
                         </p>
                     </div>
 
-                    <div class="post9">
+                    <div class="post35">
                         <img class="category8" src="assets/images/like.png" alt="like.png">
                             
                         <p class="category12">
@@ -116,7 +134,7 @@
                         <form class="post32" action="/post?id=1" method="POST">
                             <textarea class="post31 backgroundColor5 borderColor6" name="comment" placeholder="Comment" rows="1"></textarea>
         
-                            <button class="post30 cursor backgroundColor3 noBorder color1" type="submit">
+                            <button class="post30 buttonColor cursor backgroundColor3 noBorder color1" type="submit">
                                 Post Comment
                             </button>
                         </form>
