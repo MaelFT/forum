@@ -141,9 +141,10 @@
                     </div>
                 </div>
 
+                {{ .Comments }}
+
                 <div class="post10 backgroundColor1">
                     {{ if (eq .Connected 1)}}
-                        /post?id={{ .Posts.ID }}
                         <form class="post32" action="/post?id={{ .Posts.ID }}" method="POST">
                             <textarea class="post31 backgroundColor5 borderColor6" name="comment" placeholder="Comment" rows="1"></textarea>
         
@@ -187,16 +188,18 @@
                     </div>
 
                     <div class="post22">
-                        <form method="post">
+                        <form class="post41" method="post">
                             <input type="hidden" name="post_id" value="2"/>
                             <input type="hidden" name="value" value="1" />
-                            <input type="submit" />
+                            <input class="post40 cursor" type="submit" value ="" />
                         </form>
+                        <!--
                         <form method="post">
                             <input type="hidden" name="post_id" value="2" />
                             <input type="hidden" name="value" value="-1" />
-                            <input type="submit" />
+                            <input type="submit"/>
                         </form>
+                        -->
                             
                         <p class="category12">
                             {{ .Posts.Nb_Like }}
