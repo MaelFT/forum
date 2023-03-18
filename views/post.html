@@ -131,7 +131,7 @@
                 <div class="post10 backgroundColor1">
                     {{ if (eq .Connected 1)}}
                         /post?id={{ .Posts.ID }}
-                        <form class="post32" action="/post?id=1" method="POST">
+                        <form class="post32" action="/post?id={{ .Posts.ID }}" method="POST">
                             <textarea class="post31 backgroundColor5 borderColor6" name="comment" placeholder="Comment" rows="1"></textarea>
         
                             <button class="post30 buttonColor cursor backgroundColor3 noBorder color1" type="submit">

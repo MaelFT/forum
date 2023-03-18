@@ -127,7 +127,6 @@ func (r *SQLiteRepository) CheckUser(username string, password string) (*models.
 		}
 		return nil, err
 	}
-	fmt.Println(users.Password, password, ComparePassword(users.Password, password))
 	if ComparePassword(users.Password, password) != nil {
 		return nil, ErrNotExists
 	}
@@ -211,7 +210,6 @@ func (r *SQLiteRepository) TablePosts() error {
 func (r *SQLiteRepository) CreatePost(posts models.Posts) (*models.Posts, error) {
 	res, err := r.db.Exec("INSERT INTO posts(name, content, categories, user_id, date) values(?,?,?,?,?)",
 		posts.Name, posts.Content, posts.Categories, posts.User_ID, time.Now().Format(time.DateTime))
-	fmt.Println(res, err)
 	if err != nil {
 		var sqliteErr sqlite3.Error
 		if errors.As(err, &sqliteErr) {
@@ -289,24 +287,19 @@ func (r *SQLiteRepository) GetPostByID(id int64) (*models.Posts, error) {
 	}
 	if isLiked {
 		row = r.db.QueryRow("SELECT SUM(value) FROM like WHERE post_id = ?", posts.ID)
-		fmt.Println("SELECT SUM(value) FROM like WHERE post_id =", posts.ID)
 		if err := row.Scan(&like); err != nil {
 			if errors.Is(err, sql.ErrNoRows) {
 				return nil, ErrNotExists
 			}
 			return nil, err
 		}
-		fmt.Println("&like =", like)
 		posts.Is_Like = is_Like
 
 	}
 	posts.Nb_Like = like
-	fmt.Println("posts.Nb_Like =", posts.Nb_Like)
 	if like < 0 {
 		is_Like = false
 	}
-	fmt.Println("0000", posts.Is_Like)
-	fmt.Println("1111", posts.Nb_Like)
 	return &posts, nil
 }
 
@@ -525,6 +518,19 @@ func (r *SQLiteRepository) AllComments() ([]models.Comments, error) {
 	return all, nil
 }
 
+func (r *SQLiteRepository) GetCommentByPostID(post_id int64) (*models.Comments, error) {
+	row := r.db.QueryRow("SELECT * FROM comments WHERE post_id = ?", post_id)
+
+	var comments models.Comments
+	if err := row.Scan(&comments.ID, &comments.Content, &comments.Post_ID, &comments.User_ID, &comments.Date); err != nil {
+		if errors.Is(err, sql.ErrNoRows) {
+			return nil, ErrNotExists
+		}
+		return nil, err
+	}
+	return &comments, nil
+}
+
 func (r *SQLiteRepository) GetCommentByID(id int64) (*models.Comments, error) {
 	row := r.db.QueryRow("SELECT * FROM comments WHERE id = ?", id)
 
@@ -619,7 +625,6 @@ func (r *SQLiteRepository) CreateLike(like models.Like) (*models.Like, error) {
 	}
 	like.ID = id
 
-	fmt.Println("id = ", id)
 	return &like, nil
 }
 
