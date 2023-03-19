@@ -122,7 +122,6 @@ func Post(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-
 	err = tmpl.Execute(w, data)
 
 	if err != nil {
